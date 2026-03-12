@@ -12,7 +12,7 @@ html, body, [class*="css"] {
 }
 .block-container {
     max-width: 1180px;
-    padding-top: 95px;
+    padding-top: 120px;
     padding-bottom: 50px;
 }
 .topbar {
@@ -21,37 +21,40 @@ html, body, [class*="css"] {
     left: 0;
     right: 0;
     z-index: 999;
-    background: rgba(2, 6, 23, 0.78);
+}
+.navbar {
+    background: rgba(20, 20, 20, 0.88);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255,255,255,0.06);
     padding: 10px 28px;
 }
-.topbar-inner {
+.navbar-inner {
     max-width: 1250px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 120px 1fr 120px;
-    align-items: center;
-}
-.apple-left {
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
-}
-.apple-nav {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 30px;
-    color: #cbd5e1;
+    gap: 34px;
+    color: #f1f5f9;
     font-size: 13px;
 }
-.apple-nav span {
-    opacity: 0.92;
+.navbar-inner span {
+    opacity: 0.9;
 }
-.apple-right {
-    text-align: right;
-    color: #cbd5e1;
-    font-size: 13px;
+.brandmark {
+    font-weight: 700;
+    color: white;
+}
+.announcebar {
+    background: #f5f5f7;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #374151;
+}
+.announcebar b {
+    color: #2563eb;
 }
 .hero-text, .card, .cta, .footerbox {
     background: rgba(255,255,255,0.04);
@@ -152,18 +155,22 @@ img {
 </style>
 
 <div class="topbar">
-  <div class="topbar-inner">
-    <div class="apple-left">⌂</div>
-    <div class="apple-nav">
-      <span>Overview</span>
-      <span>Problem</span>
-      <span>Solution</span>
-      <span>Features</span>
-      <span>Gallery</span>
-      <span>Reviews</span>
-      <span>Contact</span>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <span class="brandmark">Smart Homestay</span>
+      <span>หน้าแรก</span>
+      <span>ปัญหา</span>
+      <span>โซลูชัน</span>
+      <span>ฟีเจอร์</span>
+      <span>แกลเลอรี</span>
+      <span>รีวิว</span>
+      <span>ติดต่อเรา</span>
     </div>
-    <div class="apple-right">Smart Stay</div>
+  </div>
+
+  <div class="announcebar">
+    <b>ขอเดโมฟรีวันนี้</b> เพื่อดูว่า Smart Autonomous Homestay / Next
+    จะช่วยให้ธุรกิจโฮมสเตย์ของคุณบริหารง่ายขึ้นได้อย่างไร
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -238,7 +245,7 @@ with left:
 
 with right:
     st.markdown('<div class="hero-image-wrap">', unsafe_allow_html=True)
-    st.image(hero_image, use_container_width=True)
+    st.image(hero_image, width="stretch")
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('<div class="hero-caption">Smart homestay experience designed for modern owners</div>', unsafe_allow_html=True)
 
@@ -284,7 +291,7 @@ st.markdown('<div class="h2">ตัวอย่างบรรยากาศโ
 gcols = st.columns(3)
 for i, img in enumerate(gallery_images):
     with gcols[i % 3]:
-        st.image(img, use_container_width=True)
+        st.image(img, width="stretch")
 
 st.markdown("<hr class='soft-line'>", unsafe_allow_html=True)
 st.markdown('<div class="section-label">Reviews</div>', unsafe_allow_html=True)
@@ -325,7 +332,7 @@ contact = st.text_input("เบอร์โทร / อีเมล")
 business = st.text_input("ชื่อโฮมสเตย์หรือธุรกิจของคุณ")
 problem = st.text_area("ปัญหาที่คุณอยากให้ระบบช่วยแก้")
 
-if st.button("ส่งข้อมูลเพื่อขอเดโม", use_container_width=True):
+if st.button("ส่งข้อมูลเพื่อขอเดโม", width="stretch"):
     st.success("ส่งข้อมูลเรียบร้อยแล้ว")
     st.write({
         "name": name,
